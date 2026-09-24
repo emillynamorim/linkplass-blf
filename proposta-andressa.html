@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentoria Estrutura — Andressa @dessa.confeiteira</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rosa: #E8A4C0;
+      --rosa-claro: #F7E0EC;
+      --rosa-escuro: #C4728A;
+      --preto: #1A1A1A;
+      --branco: #FFFFFF;
+      --verde: #5BC687;
+      --dourado: #C9A84C;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FDF4F9;
+      color: var(--preto);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(150deg, #B8566E 0%, var(--rosa-escuro) 45%, #D4849E 80%, var(--rosa) 100%);
+      padding: 56px 28px 64px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -40px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero .subtitle {
+      font-size: 15px;
+      opacity: 0.8;
+      margin-bottom: 28px;
+      font-weight: 300;
+    }
+
+    .hero-name {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 50px;
+      padding: 10px 22px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    /* ─── SEÇÕES ─── */
+    .section {
+      padding: 40px 24px;
+    }
+
+    .section:nth-child(even) {
+      background: white;
+    }
+
+    .section-label {
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--rosa-escuro);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--preto);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .section-desc {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    /* ─── TRANSFORMAÇÃO ─── */
+    .transform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 0;
+    }
+
+    .transform-box {
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .transform-box.before {
+      background: #FFF5F5;
+      border: 1px solid #FFD6D6;
+    }
+
+    .transform-box.after {
+      background: #F0FFF5;
+      border: 1px solid #B8EAC8;
+    }
+
+    .transform-box .tbox-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .transform-box.before .tbox-label { color: #E05555; }
+    .transform-box.after .tbox-label { color: #2E9E5A; }
+
+    .transform-box ul {
+      list-style: none;
+    }
+
+    .transform-box ul li {
+      font-size: 13px;
+      line-height: 1.5;
+      padding: 5px 0;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .transform-box ul li:last-child { border-bottom: none; }
+
+    .transform-box ul li span { flex: 1; }
+
+    /* ─── PILARES ─── */
+    .pilar-card {
+      background: white;
+      border-radius: 16px;
+      margin-bottom: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(232,164,192,0.2);
+      box-shadow: 0 2px 12px rgba(196,114,138,0.08);
+    }
+
+    .pilar-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 20px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .pilar-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .pilar-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--preto);
+      flex: 1;
+    }
+
+    .pilar-header .count {
+      font-size: 12px;
+      background: var(--rosa-claro);
+      color: var(--rosa-escuro);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .pilar-arrow {
+      font-size: 12px;
+      color: var(--rosa);
+      transition: transform 0.2s;
+      margin-left: 8px;
+    }
+
+    .pilar-card.open .pilar-arrow { transform: rotate(180deg); }
+
+    .pilar-body {
+      display: none;
+      padding: 4px 20px 18px;
+      border-top: 1px solid var(--rosa-claro);
+    }
+
+    .pilar-card.open .pilar-body { display: block; }
+
+    .pilar-body ul { list-style: none; }
+
+    .pilar-body ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid #F9F0F5;
+      font-size: 13.5px;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    .pilar-body ul li:last-child { border-bottom: none; }
+
+    .pilar-body ul li::before {
+      content: '🎀';
+      font-size: 12px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ─── ACOMPANHAMENTO 12 MESES ─── */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 9px;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--rosa), var(--rosa-claro));
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 22px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -22px;
+      top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--rosa-escuro);
+      border: 2px solid white;
+      box-shadow: 0 0 0 2px var(--rosa);
+    }
+
+    .timeline-item .t-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--preto);
+      margin-bottom: 4px;
+    }
+
+    .timeline-item .t-desc {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.55;
+    }
+
+    /* ─── EXCLUSIVO ANDRESSA ─── */
+    .exclusive-card {
+      background: linear-gradient(135deg, #B8566E 0%, var(--rosa-escuro) 100%);
+      border-radius: 18px;
+      padding: 28px 24px;
+      color: white;
+      margin-bottom: 14px;
+    }
+
+    .exclusive-card .ex-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .exclusive-card .ex-sub {
+      font-size: 13px;
+      opacity: 0.75;
+      margin-bottom: 20px;
+    }
+
+    .exclusive-list {
+      list-style: none;
+    }
+
+    .exclusive-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .exclusive-list li:last-child { border-bottom: none; }
+
+    .ex-star { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+    /* ─── INVESTIMENTO ─── */
+    .invest-section {
+      background: var(--preto);
+      color: white;
+      padding: 40px 24px;
+    }
+
+    .invest-section .section-label { color: var(--rosa); }
+    .invest-section .section-title { color: white; }
+    .invest-section .section-desc { color: rgba(255,255,255,0.55); }
+
+    .invest-highlight {
+      background: rgba(232,164,192,0.12);
+      border: 1px solid rgba(232,164,192,0.25);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .invest-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--rosa);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .invest-price-detail {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 18px;
+    }
+
+    .invest-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 18px 0;
+    }
+
+    .invest-message {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .invest-message strong { color: var(--rosa); font-weight: 600; }
+
+    .invest-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .invest-tag {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      background: var(--rosa-claro);
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .cta-section .section-title { margin-bottom: 10px; }
+    .cta-section .section-desc { margin-bottom: 24px; }
+
+    .cta-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--rosa-escuro);
+      margin-bottom: 6px;
+    }
+
+    .cta-handle {
+      font-size: 14px;
+      color: var(--rosa-escuro);
+      opacity: 0.7;
+      margin-bottom: 24px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--rosa-escuro);
+      color: white;
+      border-radius: 50px;
+      padding: 16px 40px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(196,114,138,0.35);
+      transition: all 0.2s;
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      background: var(--preto);
+      padding: 24px;
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ─── RESPONSIVO ─── */
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 30px; }
+      .transform-grid { grid-template-columns: 1fr; }
+      .invest-price { font-size: 38px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">✨ Proposta Exclusiva · Embaixadora</div>
+    <h1>Mentoria Estrutura<br>Emillyn Amorim</h1>
+    <p class="subtitle">12 meses de acompanhamento completo — negócio, digital e presença</p>
+    <div class="hero-name">🎀 Para Andressa · @dessa.confeiteira</div>
+  </div>
+
+  <!-- TRANSFORMAÇÃO -->
+  <div class="section">
+    <div class="section-label">A jornada</div>
+    <div class="section-title">Onde você está e onde vai chegar</div>
+    <p class="section-desc">15 anos de experiência merecem uma presença à altura. É isso que vamos construir juntas.</p>
+
+    <div class="transform-grid">
+      <div class="transform-box before">
+        <div class="tbox-label">📍 Hoje</div>
+        <ul>
+          <li><span>Experiência enorme, mas sem saber qual é o próximo passo</span></li>
+          <li><span>Sem estrutura digital organizada</span></li>
+          <li><span>Sem posicionamento claro no mercado</span></li>
+          <li><span>Conteúdo inconsistente nas redes</span></li>
+          <li><span>Sem recorrência financeira garantida</span></li>
+        </ul>
+      </div>
+      <div class="transform-box after">
+        <div class="tbox-label">✨ Em 12 meses</div>
+        <ul>
+          <li><span>Referência e autoridade no nicho</span></li>
+          <li><span>Negócio organizado e profissional</span></li>
+          <li><span>Posicionamento claro para B2B e varejo</span></li>
+          <li><span>Presença digital que atrai e converte</span></li>
+          <li><span>Recorrência financeira real</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILARES -->
+  <div class="section" style="background: #FDF4F9;">
+    <div class="section-label">O que está incluso</div>
+    <div class="section-title">Tudo que você vai receber</div>
+    <p class="section-desc">Organizado em 4 pilares — cada um construído para um aspecto diferente do seu negócio e da sua presença.</p>
+
+    <!-- Pilar 1 -->
+    <div class="pilar-card open">
+      <div class="pilar-header" onclick="togglePilar(this)">
+        <div class="pilar-icon" style="background:#FEE9F0;">📱</div>
+        <h3>Digital & Conteúdo</h3>
+        <span class="count">6 aulas</span>
+        <span class="pilar-arrow">▼</span>
+      </div>
+      <div class="pilar-body">
+        <ul>
+          <li>Canva, CapCut, posicionamento e estrutura de perfil</li>
+          <li>Captação de foto e vídeo dos serviços de confeitaria</li>
+          <li>Aula de como aparecer nos vídeos com naturalidade e autoridade</li>
+          <li>Aula de venda de anúncio — o que falar, o que mostrar, como vender em grupos e Facebook</li>
+          <li>Aula de tráfego pago com gestor especialista convidado</li>
+          <li>Aula de como captar clientes em grupos e comunidades WhatsApp</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Pilar 2 -->
+    <div class="pilar-card">
+      <div class="pilar-header" onclick="togglePilar(this)">
+        <div class="pilar-icon" style="background:#EEF8FF;">💼</div>
+        <h3>Negócio & Financeiro</h3>
+        <span class="count">5 entregas</span>
+        <span class="pilar-arrow">▼</span>
+      </div>
+      <div class="pilar-body">
+        <ul>
+          <li>Dashboard personalizado — financeiro, CRM, serviços e planejamento de conteúdo em um só lugar</li>
+          <li>Aula de precificação — como cobrar o que seu trabalho vale</li>
+          <li>Contrato padrão profissional para formalizar todos os serviços</li>
+          <li>Catálogo de serviços e produtos para apresentar aos clientes</li>
+          <li>Planejamento de metas e objetivos para os 12 meses — com clareza do caminho e marcos de conquista</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Pilar 3 -->
+    <div class="pilar-card">
+      <div class="pilar-header" onclick="togglePilar(this)">
+        <div class="pilar-icon" style="background:#FFF8EE;">✨</div>
+        <h3>Imagem & Presença</h3>
+        <span class="count">5 aulas</span>
+        <span class="pilar-arrow">▼</span>
+      </div>
+      <div class="pilar-body">
+        <ul>
+          <li>Consultoria de posicionamento — como se portar em reuniões e negociações</li>
+          <li>Aula de imagem pessoal — como a aparência comunica autoridade</li>
+          <li>Aula de automake para o dia a dia profissional</li>
+          <li>Aula de combinação de roupa e armário inteligente</li>
+          <li>Aula de cabelo — cuidados e estilo alinhados ao posicionamento</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Pilar 4 -->
+    <div class="pilar-card">
+      <div class="pilar-header" onclick="togglePilar(this)">
+        <div class="pilar-icon" style="background:#F0FFF6;">🤝</div>
+        <h3>Expansão & Parcerias</h3>
+        <span class="count">3 estratégias</span>
+        <span class="pilar-arrow">▼</span>
+      </div>
+      <div class="pilar-body">
+        <ul>
+          <li>Estratégia de atendimento B2B — como fechar com cafeterias, sorveterias e estabelecimentos</li>
+          <li>Parcerias estratégicas com casas de festa, cerimonialistas, decoradoras, DJs e casas de brinquedos</li>
+          <li>Posicionamento para atender lojas, comércios e shoppings quando necessário</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- AVISO EMBAIXADORA -->
+  <div class="section" style="background: white; padding-top: 0;">
+    <div style="background: linear-gradient(135deg, #FDF0F7, #F7E0EC); border: 1.5px dashed var(--rosa); border-radius: 16px; padding: 22px 24px; display: flex; align-items: flex-start; gap: 14px;">
+      <div style="font-size: 24px; flex-shrink: 0; margin-top: 2px;">🌱</div>
+      <div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; color: var(--rosa-escuro); margin-bottom: 6px;">O programa está crescendo</div>
+        <div style="font-size: 13.5px; color: #555; line-height: 1.7;">O que está listado acima é o ponto de partida — e já é muito. Mas a Mentoria Estrutura está sendo construída para ser cada vez mais completa. Muitos módulos e conteúdos novos serão adicionados ao longo dos 12 meses. <strong style="color: var(--rosa-escuro);">Como embaixadora, a Andressa acompanha tudo de perto e tem acesso a cada novidade assim que entra.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACOMPANHAMENTO 12 MESES -->
+  <div class="section">
+    <div class="section-label">Acompanhamento</div>
+    <div class="section-title">12 meses do seu lado</div>
+    <p class="section-desc">Não é só um pacote de aulas — é um ano inteiro com suporte real e acompanhamento de quem entende do seu negócio.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="t-title">📅 1 call mensal — só das mentoradas</div>
+        <div class="t-desc">Encontro privado para falar sobre estrutura de negócio, dúvidas e financeiro. Espaço seguro, só entre quem está na jornada.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-title">🎀 1 call mensal — comunidade Best Criadora</div>
+        <div class="t-desc">Acesso à comunidade de criação de conteúdo da Emillyn. Cada mentorada faz parte da Best Criadora durante toda a jornada.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-title">🔍 5 calls individuais ao longo dos 12 meses</div>
+        <div class="t-desc">1 encontro de apresentação para personalizar a jornada e entender cada dificuldade + 4 calls de raio X do negócio distribuídos ao longo do ano — para analisar onde você está, o que ajustar e qual é o próximo passo.</div>
+      </div>
+      <div class="timeline-item" style="margin-bottom:0">
+        <div class="t-title">💬 Grupo exclusivo de mentoradas</div>
+        <div class="t-desc">Canal direto para dúvidas rápidas, compartilhamento e suporte entre as que estão na jornada. Acesso durante os 12 meses.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXCLUSIVO ANDRESSA -->
+  <div class="section" style="background:#FDF4F9;">
+    <div class="section-label">Embaixadora</div>
+    <div class="section-title">O que é exclusivo pra você</div>
+    <p class="section-desc">Como a primeira aluna da mentoria, a Andressa tem vantagens que nenhuma outra aluna vai ter.</p>
+
+    <div class="exclusive-card">
+      <div class="ex-title">🌟 Andressa · Embaixadora</div>
+      <div class="ex-sub">@dessa.confeiteira · Confeitaria profissional · 15+ anos</div>
+      <ul class="exclusive-list">
+        <li>
+          <span class="ex-star">🏠</span>
+          <span><strong>Aulas presenciais</strong> — você não precisa aprender tudo por vídeo. As primeiras aulas e acompanhamentos acontecem presencialmente, do jeito que facilita a absorção.</span>
+        </li>
+        <li>
+          <span class="ex-star">📋</span>
+          <span><strong>Apresentação B2B personalizada</strong> — um material profissional feito especialmente para você apresentar os teus serviços para cafeterias, sorveterias e estabelecimentos.</span>
+        </li>
+        <li>
+          <span class="ex-star">📒</span>
+          <span><strong>Catálogo personalizado</strong> — feito especialmente para o teu negócio, com todos os serviços e produtos formatados para impressionar qualquer cliente.</span>
+        </li>
+        <li>
+          <span class="ex-star">🤝</span>
+          <span><strong>Participação ativa na construção</strong> — como a primeira, a tua experiência molda o programa. Teu retorno importa e é levado a sério.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INVESTIMENTO -->
+  <div class="invest-section">
+    <div class="section-label">Investimento</div>
+    <div class="section-title" style="color:white; margin-bottom:6px;">O que tudo isso custa</div>
+    <p class="section-desc">E por que faz sentido financeiramente.</p>
+
+    <div class="invest-highlight">
+      <div class="invest-price">R$ 550</div>
+      <div class="invest-price-detail">por mês · 12x · total R$ 6.600</div>
+      <div class="invest-divider"></div>
+      <div class="invest-message">
+        Com apenas <strong>4 kits festa a mais por mês</strong> você já paga a mensalidade inteira — sendo que você já vende 15.<br><br>
+        São menos de um terço da tua produção atual para bancar um ano inteiro de estrutura, presença e autoridade.<br><br>
+        Tudo que você construir ao longo desses 12 meses fica com você para sempre. A estrutura não some — ela multiplica.
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="section-label">Próximo passo</div>
+    <div class="section-title">Quando começamos?</div>
+    <p class="section-desc" style="margin-bottom:20px;">A Andressa já conhece tudo que está incluso. Agora é confirmar e começar a construir.</p>
+    <div class="cta-name">Emillyn Amorim</div>
+    <div class="cta-handle">@emillyn.amorim · Mentora de Instagram</div>
+    <a class="cta-btn" href="https://wa.me/5547999323070" target="_blank">💬 Confirmar pelo WhatsApp</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>Mentoria Estrutura · Emillyn Amorim · @emillyn.amorim</p>
+  </div>
+
+  <script>
+    function togglePilar(header) {
+      const card = header.closest('.pilar-card');
+      card.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>
